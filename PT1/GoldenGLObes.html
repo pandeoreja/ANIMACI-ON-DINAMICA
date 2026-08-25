@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+ <head>
+   <meta charset="utf-8">
+   <title>Página 2</title>
+   <style>
+    body {
+        background-color:white;
+        text-align: center;
+    }
+
+    h1{
+        color: black;
+        font-family: 'Georgia', serif;
+    }
+
+    h2 {
+        color:maroon;
+        font-variant: small-caps;
+        font-family: 'Verdana', sans-serif;
+        text-align: left;
+        padding-left: 20px;
+    }
+
+    p{
+        color:rgb(44, 44, 44);
+        font-size: 30px;
+        font-family: 'Verdana', sans-serif;
+        text-align: right;
+        padding-right: 50px;
+    }
+
+    p.texto-secundario {
+        color:gray;
+        font-size: 15px;
+        font-family: 'Verdana', sans-serif;
+        text-align: center;
+    }
+
+    .header-container{
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        grid-template-areas: 
+            "sidebar main";
+        align-items: center;
+        gap: 20px;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .header-container img {
+        grid-area: sidebar;
+        width: 100%; 
+        height: auto;
+        padding-left: 300px;
+    }
+
+    .header-container h1 {
+        grid-area: main;
+    }  
+
+    .main-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 150px; 
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .main-container img {
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+    }
+    </style>
+
+ </head>
+ <body>
+   <div class="header-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Golden_Globes_2025_wordmark.svg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" alt="Golden Globe Award">
+        <h1>Winners 2026</h1>
+    </div>
+
+    <div class="main-container">
+        <h2>Best Motion Picture - Drama</h2>
+        <p id="bestdrama">Hamnet</p>
+        <img src="https://goldenglobes.com/wp-content/uploads/2025/12/MotionPicture_28113_Hamnet_PosterArt.jpg?w=500?w=500" alt="Hamnet" width="300" height="400">
+
+        <h2>Best Motion Picture - Musical or Comedy</h2>
+        <p id="bestcomedy">One Battle After Another</p>
+        <img src="https://goldenglobes.com/wp-content/uploads/2025/12/MotionPicture_26672_OneBattleAfterAnother_PosterArt.jpg?w=500?w=500" alt="One Battle After Another" width="300" height="400">
+
+        <h2>Best Motion Picture - Non-English Language</h2>
+        <p id="bestnonenglish">The Secret Agent</p>
+        <img src="https://goldenglobes.com/wp-content/uploads/2025/12/MotionPicture_22746_KPopDemonHunters_PosterArt.jpg?w=500?w=500" alt="The Secret Agent" width="300" height="400">
+
+        <h2>Best Motion Picture - Animated</h2>
+        <p id="bestanimated">Kpop Demon Hunters</p>
+        <img src="https://goldenglobes.com/wp-content/uploads/2025/12/MotionPicture_27489_SecretAgentThe_PosterArt.jpg?w=500?w=500" alt="Kpop Demon Hunters" width="300" height="400">
+    </div>
+
+    <p class="texto-secundario" id="footer">© 2026 Golden Globe Awards. All rights reserved.</p>
+    <p class="texto-secundario" id="footer2">Anarael Aceves - 34335</p>
+    </body> 
+</html>
