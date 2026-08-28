@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+ <head>
+   <meta charset="utf-8">
+   <title>Pagina imagen animada</title>
+   <style>
+    body{
+        text-align: center;
+    }
+    canvas{
+        border: 10px solid #0b8497;
+        background-color: rgb(0, 0, 0);
+    }
+    </style>
+    <script>
+        var imgWidth = 150;
+        var imgHeight = 150;
+        var x = Math.random() * (800 - imgWidth);
+        var y = Math.random() * (600 - imgHeight);
+        var dx = 2;
+        var dy = 2;
+        var imagen = new Image();
+        imagen.src = "mora.png"; 
+
+        function animate(){    
+            requestAnimationFrame(animate);
+            var canvas = document.getElementById("micanvas");
+            var context = canvas.getContext("2d");
+            
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.drawImage(imagen, x, y, imgWidth, imgHeight);
+            
+            if (x + dx > canvas.width - imgWidth || x + dx < 0) {
+                dx = -dx;
+            }
+
+            if (y + dy > canvas.height - imgHeight || y + dy < 0) {
+                dy = -dy;
+            }
+
+            x += dx;
+            y += dy;
+        }
+        
+        imagen.onload = function() {
+            animate();
+        }
+    </script>
+</head>
+<body>
+    <canvas id="micanvas" width="800" height="600"></canvas>
+</body>
+</html>
