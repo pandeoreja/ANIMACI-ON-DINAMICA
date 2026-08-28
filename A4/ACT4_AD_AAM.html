@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Pagina 3</title>
+  <style>
+      canvas{
+          border: 7px solid #0fbebe;
+          background-color: rgb(255, 255, 255);
+      }
+  </style>
+  </head>
+  <script>
+        var x=Math.random() * 800;
+       var y=Math.random() * 600;
+       var dx=4;
+       function animate(){
+           requestAnimationFrame(animate);
+           var canvas = document.getElementById("micanvas");
+           var context = canvas.getContext("2d");
+           context.clearRect(0, 0, innerWidth, innerHeight);
+           
+           //tomate
+            context.fillStyle='rgba(255,0,0,1)';
+           context.fillRect(x,100,360,60);
+            context.fillStyle='rgba(255,0,0,1)';
+           context.fillRect(x+30,40,300,60);
+            context.fillStyle='rgba(255,0,0,1)';
+           context.fillRect(x-30,160,420,120);
+            context.fillStyle='rgba(255,0,0,1)';
+           context.fillRect(x,280,360,60);
+            context.fillStyle='rgba(255,0,0,1)';
+           context.fillRect(x+30,340,300,60);
+
+           //tallo
+            context.fillStyle='rgba(43, 133, 5, 1)';
+           context.fillRect(x+150,100,60,120);
+            context.fillStyle='rgba(43, 133, 5, 1)';
+           context.fillRect(x+100,135,160,45);
+
+            if (x > 800 || x < 0){
+                dx= -dx;
+            }
+           x+=dx;
+           
+       }
+       animate();
+  </script>
+
+<body>
+   <canvas id="micanvas" width="800" height="600"></canvas>
+</body>
+</html>
