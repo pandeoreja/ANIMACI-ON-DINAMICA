@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Key Codes</title>
+    <style>
+      body { 
+        background-color:rgb(234, 225, 170);
+        text-align: center;
+      }
+      canvas {
+        background-color:white;
+      }
+
+      h1 {
+        color: rgb(228, 18, 137);
+        font-family: 'Times New Roman', serif;
+      }
+
+      p {
+        color: rgb(117, 92, 24);
+        font-family: 'Times New Roman', serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>- 707 -</h1>
+    <p>Presiona las teclas H, N, O, R, S, o Y para cambiar de personaje</p>
+    <canvas id="canvas" width="750" height="600"></canvas>
+    
+    <script src="keycodes.js"></script>
+
+    <script>
+    window.onload = function () {
+      var canvas = document.getElementById("canvas");
+      var context = canvas.getContext("2d");
+      var x = 275;
+      var y = 180;
+     
+      var imagen = new Image();
+      imagen.src = "nana.jpg";
+      imagen.onload = function(){
+        context.drawImage(imagen, x-150, y-130, 500, 500);
+      }
+
+      var imagenH= new Image();
+      imagenH.src = "hachi.jpg";
+      context.drawImage(imagenH, x-50, y+30, 300, 300);
+      
+
+      var imagenN= new Image();
+      imagenN.src = "nanao.jpg";
+      context.drawImage(imagenN, x-50, y+30, 300, 300);
+    
+
+      var imagenS= new Image();
+      imagenS.src = "Shin.jpg";
+      context.drawImage(imagenS, x-50, y+30, 300, 300);
+    
+
+      var imagenR= new Image();
+      imagenR.src = "ren.jpg";
+      context.drawImage(imagenR, x-50, y+30, 300, 300);
+
+      var imagenY= new Image();
+      imagenY.src = "yasushi.jpg";
+      context.drawImage(imagenY, x-50, y+30, 300, 300);
+    
+
+      var imagenO= new Image();
+      imagenO.src = "nobu.jpg";
+      context.drawImage(imagenO, x-50, y+30, 300, 300);
+
+
+      function onKeyboardEvent (event) {
+        context.font = '40pt trebuchet ms';
+
+        switch (event.keyCode) {
+        case keycode.H:
+          console.log("Letra H!");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+          context.save();
+          context.fillStyle =  'rgb(218, 106, 135)';
+          context.fillText('Nana Komatsu (Hachi)', x-160, y-30);
+          context.drawImage(imagenH, x-50, y+10, 300, 300);
+          context.font = '15pt trebuchet ms';
+          context.fillText('migajera', x+60, y+350);
+          context.restore();
+          break;
+          
+        case keycode.N:
+          console.log("Letra N !");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+          context.save();
+          context.fillStyle =  'rgb(107, 34, 159)';
+          context.fillText('Nana Osaki', x-30, y-20);
+          context.drawImage(imagenN, x-50, y+10, 300, 300);
+          context.font = '15pt trebuchet ms';
+          context.fillText('emo', x+75, y+350);
+          context.restore();
+          break;
+          
+        case keycode.S:
+          console.log("Letra S!");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+          context.save();
+          context.fillStyle =  'rgb(123, 186, 231)';
+          context.fillText('Shinichi Okazaki', x-85, y-20);
+          context.drawImage(imagenS, x-50, y+10, 300, 300);
+          context.font = '15pt trebuchet ms';
+          context.fillText('traumatizado', x+45, y+350);
+          context.restore();
+          break;
+
+        case keycode.R:
+          console.log("Letra R!");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+          context.save();
+          context.fillStyle =  'rgb(92, 36, 48)';
+          context.fillText('Ren Honjo', x-17, y-20);
+          context.drawImage(imagenR, x-50, y+10, 300, 300);
+          context.font = '15pt trebuchet ms';
+          context.fillText('obsesivo', x+63, y+350);
+          context.restore();
+          break;
+
+        case keycode.Y:
+          console.log("Letra Y!");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+          context.save();
+          context.fillStyle =  'rgb(25, 26, 108)';
+          context.fillText('Yasushi Takagi', x-65, y-20);
+          context.drawImage(imagenY, x-50, y+10, 300, 300);
+          context.restore();
+          context.font = '15pt trebuchet ms';
+          context.fillText('protector', x+57, y+350);
+          break;
+
+        case keycode.O:
+          console.log("Letra O!");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+          context.save();
+          context.fillStyle =  'rgb(233, 203, 94)';
+          context.fillText('Nobuo Terashima', x-97, y-20);
+          context.drawImage(imagenO, x-50, y+10, 300, 300);
+          context.font = '15pt trebuchet ms';
+          context.fillText('leal', x+87, y+350);
+          context.restore();
+          break;
+          
+        default:
+          console.log(event.keyCode);
+        }
+      }
+
+      window.addEventListener('keydown', onKeyboardEvent, false);
+    };
+    </script>
+  </body>
+</html>
