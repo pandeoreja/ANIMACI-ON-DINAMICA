@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Rotate to Mouse</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <canvas id="canvas" width="1000" height="550"></canvas>
+    <aside>Marea a bamgeut.</aside>
+    
+    <script src="utils.js"></script>
+
+    <script>
+    window.onload = function () {
+      var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d'),
+          mouse = utils.captureMouse(canvas),
+          pelota = new Image();
+          pelota.src = 'bamgeut.png';
+        
+      (function drawFrame () {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.save();
+        var x = canvas.width / 2,
+            y = canvas.height / 2;
+
+        context.translate(x, y);
+        var dx = mouse.x - x,
+            dy = mouse.y - y;
+        
+        var radianes = Math.atan2(dy, dx);
+        console.log(radianes);
+        context.rotate(radianes);
+
+        var escala = 0.5;
+        var ancho = pelota.width * escala;
+        var alto = pelota.height * escala;
+
+        context.drawImage(pelota, -ancho / 2, -alto / 2, ancho, alto);
+
+        context.restore();
+        
+      }());
+    };
+    </script>
+  </body>
+</html>

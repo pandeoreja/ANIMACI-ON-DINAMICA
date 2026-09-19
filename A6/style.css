@@ -1,0 +1,45 @@
+aside, footer, header, nav, section {
+  display: block;
+}
+
+body {
+  background-color: #f5c3d9;
+  color: #581434;
+  font-family: Verdana, sans-serif;
+  text-align: center;
+  padding: 40px;
+}
+
+h1 {
+  color: #9b2c53;
+}
+
+canvas {
+  background-color: white;
+  border: 3px solid #9b2c53;
+  border-radius: 15px;
+}
+
+aside {
+  padding-top: 15px;
+  font-size: 18px;
+  color: #581434;
+}
+
+a {
+  color: #9b2c53;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #9b2c53;
+}
+
+ol {
+    margin: 0px auto;
+    text-align: center;
+    font-family: verdana;
+    font-size: 20px;
+    color: #581434;
+}
