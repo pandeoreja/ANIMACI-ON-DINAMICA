@@ -36,12 +36,35 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-radius: 30px calc;
+            border-radius: 30px;
         }
 
         .container {
             grid-template-areas:
-                "header header"
+                "header header";
+        }
+
+        .containerGrid {
+            display: grid;
+            grid-template-columns:
+            1fr 1fr 1fr;
+            gap: 30px;
+            padding: 20px 0; 
+        }
+
+        .containerGrid h3 {
+            color: rgb(187, 74, 160);
+            font-family: 'Georgia', serif;
+            margin-top: 0;
+        }
+
+        .containerGrid ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .containerGrid li {
+            margin-bottom: 10px;
         }
     
     </style>
@@ -55,17 +78,24 @@
 
     <img class="imagen" src="https://i.pinimg.com/1200x/c9/52/13/c952131531a8f8ee68b14954219f001e.jpg" alt="pasto">
 
-    <ol>
-            <li><a href="A1/ACT1_AD_AAM.html"> Actividad 1 - AAM</a></li>
-        <br>
-            <li><a href="PT1/GoldenGlobes.html"> Reto 1 - AAM</a></li>
-        <br>
-            <li><a href="A4/ACT4_AD_AAM.html"> Actividad 4 - AAM</a></li>
-         <br>
-            <li><a href="PT2/PT2_AD_AAM.html"> Reto 2 - AAM</a></li>
-         <br>
-            <li><a href="P/Proyecto.html"> Proyecto 1 - AAM</a></li>
-    </ol>
+    <div class="containerGrid">
+        <div>
+            <h3>Parcial 1</h3>
+            <ol>
+                    <li><a href="A1/ACT1_AD_AAM.html"> Actividad 1 - AAM</a></li>
+                    <li><a href="PT1/GoldenGlobes.html"> Reto 1 - AAM</a></li>
+                    <li><a href="A4/ACT4_AD_AAM.html"> Actividad 4 - AAM</a></li>
+                    <li><a href="PT2/PT2_AD_AAM.html"> Reto 2 - AAM</a></li>
+                    <li><a href="P/Proyecto.html"> Proyecto 1 - AAM</a></li>
+            </ol>
+        </div>
 
+        <div>
+            <h3>Parcial 2</h3>
+            <ol>
+                <li><a href="A6/RotaciónMouse.html"> Actvidad 2 - AAM</a></li>
+            </ol>
+        </div>
+    </div>
 </body>
 </html>
