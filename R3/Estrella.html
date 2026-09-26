@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Movimiento Senoidal</title>
+    <link rel="stylesheet" href="style.css">
+
+  </head>
+  <body>
+
+    <canvas id="miCanvas" width="1000" height="590"></canvas>
+
+    <script>
+    var canvas = document.getElementById('miCanvas');
+    var ctx = canvas.getContext('2d');
+    var img = new Image();
+    img.src = 'jollybob.png';
+    var x = 0;
+    var vx = 2.3;
+    var imgWidth = 250;
+    var imgHeight = 250;
+    var amplitude = 150;
+    var frequency = 0.009;
+    var sueloY = canvas.height - imgHeight; 
+
+    function animar() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      x += vx;
+      if (x + imgWidth >= canvas.width) {
+        x = canvas.width - imgWidth;
+        vx *= -1;
+      } else if (x <= 0) {
+        x = 0;
+        vx *= -1;
+      }
+
+      var y = sueloY - Math.abs(Math.sin(x * frequency)) * amplitude;
+
+      ctx.drawImage(img, x, y, imgWidth, imgHeight);
+      requestAnimationFrame(animar);
+    }
+
+    img.onload = function() {
+      animar();
+    };
+    </script>
+  </body>
+</html
