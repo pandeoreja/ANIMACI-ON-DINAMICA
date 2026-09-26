@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Pulso</title>
+    <link rel="stylesheet" href="style.css">
+  </head>  
+  <body>
+    <canvas id="canvas" width="1000" height="580"></canvas>
+    
+    <script src="utils.js"></script>
+
+    <script>
+    window.onload = function () {
+      var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d'),
+          apple = new Image(),
+          angle = 0,
+          centerScale = 0.3,
+          range = .1,
+          escalaX = 1,
+          escalaY = 1,
+          speed = 0.05,
+          posicionX = 0,
+          posicionY = 0,
+          centerY = 0,
+          rangeY = 100,
+          speedX = 1;
+          apple.src = "bamgeut apple.jpg";
+        
+        
+      (function drawFrame () {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.save();
+        context.translate(canvas.width/2, canvas.height/2);
+        escalaX = escalaY = centerScale + Math.sin(angle) * range;
+        angle += speed;
+        var anchoDibujado = apple.width * escalaX;
+        var altoDibujado = apple.height * escalaY;
+        context.drawImage(
+            apple, 
+            -anchoDibujado / 2, 
+            -altoDibujado / 2, 
+            anchoDibujado, 
+            altoDibujado
+          );
+        context.restore();
+      }());
+    };
+    </script>
+  </body>
+</html>

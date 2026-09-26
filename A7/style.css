@@ -1,0 +1,15 @@
+aside, footer, header, nav, section {
+  display: block;
+}
+
+body {
+  background-color: #ffa4a4;
+  text-align: center;
+  padding: 40px;
+}
+
+canvas {
+  background-color: rgb(209, 255, 254);
+  border: 3px solid rgb(25, 115, 114);
+  border-radius: 15px;
+}
