@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <canvas id="canvas" width="1100" height="600"></canvas>
+    <script>
+        window.onload = function () {
+
+      var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d');
+
+        //CASA
+        context.save();
+        context.lineWidth = 7;
+        context.strokeStyle = 'rgb(54, 40, 15)';
+        context.fillStyle = 'rgb(136, 110, 61)';
+
+        context.beginPath();
+        context.moveTo(112.5, 150);
+        context.lineTo(190, 90);
+        context.lineTo(262.5, 150);
+        context.lineTo(262.5, 300);
+        context.lineTo(112.5, 300);
+        context.closePath();
+        context.fill();
+        context.stroke();
+        context.restore();
+
+       //HONGO
+        context.save();
+        context.lineWidth = 7;
+        context.strokeStyle = 'rgb(54, 40, 15)';
+
+        context.fillStyle = 'rgb(240, 225, 200)';
+        context.beginPath();
+        context.moveTo(400, 188);
+        context.quadraticCurveTo(395, 240, 390, 290);
+        context.quadraticCurveTo(437.5, 305, 485, 290);
+        context.quadraticCurveTo(480, 240, 475, 188);
+        context.closePath();
+        context.fill();
+        context.stroke();
+
+        context.fillStyle = 'rgb(220, 40, 40)';
+        context.beginPath();
+        context.moveTo(350, 188);
+        context.quadraticCurveTo(437.5, 208, 525, 188);
+        context.bezierCurveTo(535, 98, 340, 98, 350, 188);
+        context.closePath();
+        context.fill();
+        context.stroke();
+        context.restore();
+
+        //ESTRELLA
+        context.save();
+        context.lineWidth = 7;
+        context.strokeStyle = 'rgb(54, 40, 15)';
+
+       var gradienteEstrella = context.createLinearGradient(0, 60, 0, 270);
+        gradienteEstrella.addColorStop(0, 'rgb(255, 140, 0)');
+        gradienteEstrella.addColorStop(1, 'rgb(255, 220, 0)');
+        context.fillStyle = gradienteEstrella;
+
+        context.beginPath();
+        context.moveTo(680, 60);
+        context.lineTo(708, 140);
+        context.lineTo(790, 140);
+        context.lineTo(724, 190);
+        context.lineTo(750, 270);
+        context.lineTo(680, 220);
+        context.lineTo(610, 270); 
+        context.lineTo(636, 190);
+        context.lineTo(570, 140); 
+        context.lineTo(652, 140);
+        context.closePath();
+        context.fill();
+        context.stroke();
+        context.restore();
+
+        //LUNA
+        context.save();
+        context.lineWidth = 7;
+        context.strokeStyle = 'rgb(54, 40, 15)';
+        context.fillStyle = 'rgb(43, 65, 90)';
+        context.beginPath();
+        context.moveTo(850, 80);
+        context.bezierCurveTo(980, 110, 980, 210, 850, 240);
+        context.bezierCurveTo(910, 200, 910, 120, 850, 80);
+        context.closePath();
+        context.fill();
+        context.stroke();
+        context.restore();
+
+        //LIBRE
+        context.save();
+        context.lineWidth = 7;
+        context.strokeStyle = 'rgb(120, 30, 80)';
+        context.fillStyle = 'rgb(255, 100, 150)';
+        context.beginPath();
+        context.moveTo(200, 400); 
+        context.bezierCurveTo(200, 370, 150, 370, 150, 400);
+        context.bezierCurveTo(150, 450, 200, 480, 200, 500);
+        context.bezierCurveTo(200, 480, 250, 450, 250, 400); 
+        context.bezierCurveTo(250, 370, 200, 370, 200, 400); 
+        context.closePath();
+        context.fill();
+        context.stroke();
+        context.restore();
+
+        //ZORRO CETYS
+        context.save();
+        context.lineWidth = 7;
+        context.strokeStyle = 'rgb(54, 40, 15)';
+        context.fillStyle = 'rgb(255, 200, 0)';
+        context.beginPath();
+        context.moveTo(400, 380); // Oreja izquierda
+        context.lineTo(470, 420); // Frente
+        context.lineTo(540, 380); // Oreja derecha
+        context.lineTo(570, 470); // Mejilla derecha
+        context.lineTo(470, 560); // Barbilla
+        context.lineTo(370, 470); // Mejilla izquierda
+        context.closePath();
+        context.fill();
+        context.stroke();
+
+        context.fillStyle = 'rgb(54, 40, 15)';
+        context.beginPath();
+        context.moveTo(400, 380);
+        context.lineTo(440, 410);
+        context.lineTo(410, 440);
+        context.closePath();
+        context.fill();
+
+        context.beginPath();
+        context.moveTo(540, 380);
+        context.lineTo(500, 410);
+        context.lineTo(530, 440);
+        context.closePath();
+        context.fill();
+
+        context.beginPath();
+        context.moveTo(420, 460);
+        context.lineTo(450, 490);
+        context.lineTo(450, 470);
+        context.closePath();
+        context.fill();
+
+        context.beginPath();
+        context.moveTo(520, 460);
+        context.lineTo(490, 490);
+        context.lineTo(490, 470);
+        context.closePath();
+        context.fill();
+
+        context.beginPath();
+        context.moveTo(455, 545);
+        context.lineTo(485, 545);
+        context.lineTo(470, 560);
+        context.closePath();
+        context.fill();
+
+        context.restore();
+
+    };
+    </script>
+  </body>
+</html>
