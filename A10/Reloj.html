@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reloj</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <div class="reloj">
+    <div class="centro"></div>
+    <div id="manecilla-horas" class="manecilla horas"></div>
+    <div id="manecilla-minutos" class="manecilla minutos"></div>
+    <div id="manecilla-segundos" class="manecilla segundos"></div>
+  </div>
+
+  <script>
+    const elHoras = document.getElementById('manecilla-horas');
+    const elMinutos = document.getElementById('manecilla-minutos');
+    const elSegundos = document.getElementById('manecilla-segundos');
+
+    let anguloSegundos = 0;
+    let anguloMinutos = 0;
+    let anguloHoras = 0;
+
+    let multiplicador = 50;
+    let ultimoTiempo = null;
+
+    const VELOCIDAD_BASE_SEGUNDOS = 6;
+
+    function actualizarReloj(tiempoActual) {
+      if (!ultimoTiempo) ultimoTiempo = tiempoActual;
+      
+      const deltaTiempo = (tiempoActual - ultimoTiempo) / 1000;
+      ultimoTiempo = tiempoActual;
+
+      const vr1 = VELOCIDAD_BASE_SEGUNDOS * multiplicador;
+      const vr2 = vr1 / 60;
+      const vr3 = vr1 / 720;
+
+      anguloSegundos += vr1 * deltaTiempo;
+      anguloMinutos  += vr2 * deltaTiempo;
+      anguloHoras    += vr3 * deltaTiempo;
+
+      elSegundos.style.transform = `rotate(${anguloSegundos}deg)`;
+      elMinutos.style.transform  = `rotate(${anguloMinutos}deg)`;
+      elHoras.style.transform    = `rotate(${anguloHoras}deg)`;
+
+      requestAnimationFrame(actualizarReloj);
+    }
+
+    requestAnimationFrame(actualizarReloj);
+  </script>
+</body>
+</html>
