@@ -1,0 +1,117 @@
+*{
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(30, 112, 97);
+    font-family: Century Gothic, serif;
+    margin-bottom: 20px;
+}
+
+body {
+    background-color: rgb(194, 206, 202);
+    font-family: 'Century Gothic', sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.app-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.25);
+    padding: 15px;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+.colores {
+    display: flex;
+    flex-direction:column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.colores button {
+    width: 70px;
+    height: 43px;
+    border-radius: 12px;
+    border: 2px solid white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.colores button:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.colores button:active {
+    transform: scale(0.95);
+}
+
+#black  { background: rgb(29, 29, 29); }
+#red    { background: #FF3B30; }
+#orange { background: #FF9500; }
+#yellow { background: #FFCC00; }
+#green  { background: #34C759; }
+#blue   { background: #007AFF; }
+#purple { background: #800080; }
+#pink   { background: #ee79af; }
+#white  { background: white; }
+
+#otros button {
+    width: 70px;
+    height: 50px;
+    background: rgb(30, 112, 97);
+    color: white;
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+#otros button:hover {
+    opacity: 0.8;
+}
+
+#otros button:active {
+    transform: scale(0.98);
+}
+
+.canvas-wrapper {
+    text-align: center;
+}
+
+canvas {
+    background-color: white;
+    border: 10px solid rgb(30, 112, 97);
+    border-radius: 15px;
+    margin-top: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+aside {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+

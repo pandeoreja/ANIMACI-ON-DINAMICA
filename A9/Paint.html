@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Kiwi Paint</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <h1>Kiwi's Paint</h1>
+
+    <div class="app-container">
+      <div class="sidebar">
+        <div class="colores">
+          <button id="black" type="button" value="#000000"></button>
+          <button id="red" type="button" value="#ff0000"></button>
+          <button id="orange" type="button" value="#FF9500"></button>
+          <button id="yellow" type="button" value="#FFCC00"></button>
+          <button id="green" type="button" value="#34C759"></button>
+          <button id="blue" type="button" value="#007AFF"></button>
+          <button id="purple" type="button" value="#800080"></button>
+          <button id="pink" type="button" value="#ee79af"></button>
+          <button id="white" type="button" value="#ffffff"></button>
+        </div>
+
+        <div id="otros">
+          <button id="clearCanvas" type="button">Clear</button>
+        </div>
+      </div>
+
+      <div class="canvas-wrapper">
+        <canvas id="canvas" width="1000" height="500"></canvas>
+        <aside>Haz click en el color para dibujar</aside>
+      </div>
+    </div>
+
+    <script src="utils.js"></script>
+    <script>
+    window.onload = function () {
+      var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d'),
+          mouse = utils.captureMouse(canvas);
+
+      context.lineWidth = 5;
+      context.lineCap = 'round';
+      context.lineJoin = 'round';
+
+      canvas.addEventListener('mousedown', function () {
+        context.beginPath();
+        context.moveTo(mouse.x, mouse.y);
+        canvas.addEventListener('mousemove', onMouseMove, false);
+      }, false);
+
+      canvas.addEventListener('mouseup', function () {
+        canvas.removeEventListener('mousemove', onMouseMove, false);
+      }, false);
+
+      function onMouseMove () {
+        context.lineTo(mouse.x, mouse.y);
+        context.stroke();
+      }
+
+      var colores = document.getElementsByClassName('colores')[0];
+
+      colores.addEventListener('click', function(event) {
+        if (event.target.tagName === 'BUTTON' && event.target.value) {
+          context.strokeStyle = event.target.value;
+        }
+      });
+
+      var clearButton = document.getElementById('clearCanvas');
+
+      clearButton.addEventListener('click', function() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+      });
+    };
+    </script>
+  </body>
+</html>
