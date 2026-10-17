@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gato volador</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="container">
+        <div class="canvas-container">
+            <canvas id="canvas" width="1000" height="600"></canvas>
+        </div>
+
+        <p>Mueve al gato con "a, w, s, d".</p>
+    </main>
+
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        const anchoCanvas = canvas.width;
+        const altoCanvas = canvas.height;
+        const imagenFondo = new Image();
+        const rutaFondo = "space.jpg";
+        let fondoCargado = false;
+
+        if (rutaFondo !== "") {
+            imagenFondo.onload = () => { fondoCargado = true; };
+            imagenFondo.src = rutaFondo;
+        }
+
+        function Nave() {
+            this.x = anchoCanvas / 2;
+            this.y = altoCanvas / 2;
+            this.rotation = 0;
+            this.showFlame = false;
+            this.ancho = 200;
+            this.alto = 150;
+            this.anchoFlama = 145;
+            this.altoFlama = 107;
+            this.velocidadX = 0;
+            this.velocidadY = 0;
+            this.aceleracion = 0.2;
+            this.friccion = 0.98;
+            this.velocidadMaxima = 6;
+            this.velocidadGiro = 0.12;
+            this.imgNave = new Image();
+            this.imgNave.src = "gat.png";
+            this.imgFlama = new Image();
+            this.imgFlama.src = "botonn.png";
+        }
+
+        Nave.prototype.draw = function (context) {
+            context.save();
+            context.translate(this.x, this.y);
+            context.rotate(this.rotation);
+
+            if (this.showFlame && this.imgFlama.complete) {
+                context.drawImage(
+                    this.imgFlama,
+                    this.ancho / 2,
+                    -this.altoFlama / 2,
+                    this.anchoFlama,
+                    this.altoFlama
+                );
+            }
+
+            if (this.imgNave.complete) {
+                context.drawImage(
+                    this.imgNave,
+                    -this.ancho / 2,
+                    -this.alto / 2,
+                    this.ancho,
+                    this.alto
+                );
+            }
+
+            context.restore();
+        };
+
+        Nave.prototype.actualizar = function (teclas) {
+            this.showFlame = false;
+
+            if (teclas["ArrowUp"] || teclas["w"] || teclas["W"]) {
+                this.velocidadY -= this.aceleracion;
+                this.showFlame = true;
+            }
+            if (teclas["ArrowDown"] || teclas["s"] || teclas["S"]) {
+                this.velocidadY += this.aceleracion;
+                this.showFlame = true;
+            }
+            if (teclas["ArrowLeft"] || teclas["a"] || teclas["A"]) {
+                this.velocidadX -= this.aceleracion;
+                this.showFlame = true;
+            }
+            if (teclas["ArrowRight"] || teclas["d"] || teclas["D"]) {
+                this.velocidadX += this.aceleracion;
+                this.showFlame = true;
+            }
+
+            this.velocidadX = Math.max(-this.velocidadMaxima, Math.min(this.velocidadMaxima, this.velocidadX));
+            this.velocidadY = Math.max(-this.velocidadMaxima, Math.min(this.velocidadMaxima, this.velocidadY));
+            this.velocidadX *= this.friccion;
+            this.velocidadY *= this.friccion;
+
+            if (Math.abs(this.velocidadX) > 0.15 || Math.abs(this.velocidadY) > 0.15) {
+                const anguloObjetivo = Math.atan2(this.velocidadY, this.velocidadX) + Math.PI / 2;
+                let diferencia = anguloObjetivo - this.rotation;
+
+                diferencia = Math.atan2(Math.sin(diferencia), Math.cos(diferencia));
+                this.rotation += diferencia * this.velocidadGiro;
+            }
+
+            this.x += this.velocidadX;
+            this.y += this.velocidadY;
+
+            const mitadAncho = this.ancho / 2;
+            const mitadAlto = this.alto / 2;
+
+            if (this.x - mitadAncho < 0) {
+                this.x = mitadAncho;
+                this.velocidadX = 0;
+            }
+            if (this.x + mitadAncho > anchoCanvas) {
+                this.x = anchoCanvas - mitadAncho;
+                this.velocidadX = 0;
+            }
+            if (this.y - mitadAlto < 0) {
+                this.y = mitadAlto;
+                this.velocidadY = 0;
+            }
+            if (this.y + mitadAlto > altoCanvas) {
+                this.y = altoCanvas - mitadAlto;
+                this.velocidadY = 0;
+            }
+        };
+
+        const jugador = new Nave();
+        const teclas = {};
+
+        document.addEventListener("keydown", (evento) => {
+            const teclasMovimiento = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "w", "a", "s", "d", "W", "A", "S", "D"];
+            if (teclasMovimiento.includes(evento.key)) {
+                evento.preventDefault();
+            }
+            teclas[evento.key] = true;
+        });
+
+        document.addEventListener("keyup", (evento) => {
+            teclas[evento.key] = false;
+        });
+
+        window.addEventListener("blur", () => {
+            for (const tecla in teclas) {
+                teclas[tecla] = false;
+            }
+        });
+
+        function dibujarFondo() {
+            if (fondoCargado) {
+                ctx.drawImage(imagenFondo, 0, 0, anchoCanvas, altoCanvas);
+            } else {
+                const degradado = ctx.createLinearGradient(0, 0, anchoCanvas, altoCanvas);
+                degradado.addColorStop(0, "#090d2b");
+                degradado.addColorStop(0.5, "#211044");
+                degradado.addColorStop(1, "#080b20");
+                ctx.fillStyle = degradado;
+                ctx.fillRect(0, 0, anchoCanvas, altoCanvas);
+            }
+        }
+
+        function animar() {
+            dibujarFondo();
+            jugador.actualizar(teclas);
+            jugador.draw(ctx);
+            requestAnimationFrame(animar);
+        }
+
+        animar();
+    </script>
+</body>
+
+</html>
